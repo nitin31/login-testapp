@@ -1,0 +1,1 @@
+Test app to demonstrate sign up / login using an email or phone number.
