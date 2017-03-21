@@ -14,7 +14,7 @@ body {
   display: -webkit-flex;
   display: flex;
   height: 100%;
-  margin-left: 35%;
+  margin-left: 25%;
 }
 
 #logbox {
@@ -81,3 +81,11 @@ h1, input {
 .inputButton:focus {
   outline: none;
 }
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+.navbar li a{ color: #21ce99; 
+font-size: 125%;} 
+.navbar:hover {color: white;}

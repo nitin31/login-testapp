@@ -43,6 +43,14 @@ port = int(os.getenv('PORT', 8080))
 def home():
     return render_template('signup.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/signin')
+def signin():
+    return render_template('signin.html')
+
 # /* Endpoint to greet and add a new visitor to database.
 # * Send a POST request to localhost:8080/api/visitors with body
 # * {
