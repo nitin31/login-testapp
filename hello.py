@@ -4,18 +4,39 @@ import atexit
 import cf_deployment_tracker
 import os
 import json
+from flask_mail import Mail
+from flask.ext.mail import Message
 
 # Emit Bluemix deployment event
 cf_deployment_tracker.track()
 
+MAIL_SERVER='smtp.gmail.com'
+MAIL_PORT=465
+MAIL_USE_TLS = False
+MAIL_USE_SSL= True
+MAIL_USERNAME = os.getenv('GMAIL_USERNAME')
+MAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
+
 app = Flask(__name__)
+app.config.from_object(__name__)
+mail = Mail(app)
 
 db_name = 'mydb'
 client = None
 db = None
 
+def send_email(to, subject, template):
+	msg = Message(
+        subject,
+        recipients=[to],
+        html=template,
+        sender="testloginapp111@gmail.com")
+	mail.send(msg)
+
+
 if 'VCAP_SERVICES' in os.environ:
     vcap = json.loads(os.getenv('VCAP_SERVICES'))
+    print vcap
     print('Found VCAP_SERVICES')
     if 'cloudantNoSQLDB' in vcap:
         creds = vcap['cloudantNoSQLDB'][0]['credentials']
@@ -24,6 +45,7 @@ if 'VCAP_SERVICES' in os.environ:
         url = 'https://' + creds['host']
         client = Cloudant(user, password, url=url, connect=True)
         db = client.create_database(db_name, throw_on_exists=False)
+        print('DB CREATED')
 elif os.path.isfile('vcap-local.json'):
     with open('vcap-local.json') as f:
         vcap = json.load(f)
@@ -41,7 +63,8 @@ port = int(os.getenv('PORT', 8080))
 
 @app.route('/')
 def home():
-    return render_template('signup.html')
+	send_email("nitinsharma0389@gmail.com", "subject", "template")
+	return render_template('signup.html')
 
 @app.route('/signup')
 def signup():
@@ -60,10 +83,12 @@ def signin():
 @app.route('/api/visitors', methods=['GET'])
 def get_visitor():
     if client:
-        return jsonify(list(map(lambda doc: doc['name'], db)))
+    	print('got data')
+    	return jsonify(['got data'])
+#        return jsonify(list(map(lambda doc: doc['name'], db)))
     else:
         print('No database')
-        return jsonify([])
+        return jsonify(['No database'])
 
 # /**
 #  * Endpoint to get a JSON array of all the visitors in the database
