@@ -1,19 +1,20 @@
 ::selection {
-  background-color: #b5e2e7;
+  background-color: #21ce99;
 }
 
 ::-moz-selection {
-  background-color: #8ac7d8;
+  background-color: #21ce99;
 }
 
 body {
-  background: #3CC;
+  background: white;
 }
 
 .container {
   display: -webkit-flex;
   display: flex;
   height: 100%;
+  margin-left: 35%;
 }
 
 #logbox {
@@ -48,7 +49,7 @@ h1, input {
 }
 .input:focus {
   outline: none;
-  border-bottom-color: #3CC !important;
+  border-bottom-color: #21ce99 !important;
 }
 .input:hover {
   border-bottom-color: #dcdcdc;
@@ -68,18 +69,11 @@ h1, input {
   display: block;
   margin: 30px auto 30px;
   color: white;
-  background-color: #3CC;
+  background-color: #21ce99;
   border: none;
-  -webkit-box-shadow: 0 5px 0 #2CADAD;
-  -moz-box-shadow: 0 5px 0 #2CADAD;
-  box-shadow: 0 5px 0 #2CADAD;
+  box-shadow: 0 5px 0 #21ce99;
 }
-.inputButton:hover {
-  top: 2px;
-  -webkit-box-shadow: 0 3px 0 #2CADAD;
-  -moz-box-shadow: 0 3px 0 #2CADAD;
-  box-shadow: 0 3px 0 #2CADAD;
-}
+
 .inputButton:active {
   top: 5px;
   box-shadow: none;
