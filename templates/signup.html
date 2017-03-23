@@ -3,12 +3,11 @@
   <div class="container">
 	  <div class="col-md-6">
 	    <div id="logbox">
-	      <form id="signup" method="post" action="/signup">
-	        <h1>create an account</h1>
-	        <input name="user[name]" type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
-	        <input name="user[password]" type="password" placeholder="Choose a password" required="required" class="input pass"/>
-	        <input name="user[password2]" type="password" placeholder="Confirm password" required="required" class="input pass"/>
-	        <input name="user[email]" type="email" placeholder="Email address" class="input pass"/>
+	      <form id="new_user" method="post" action="/new_user">
+	        <h1>Create an account</h1>
+	        <input name="email" type="email" placeholder="Email (this will be your username)" autofocus="autofocus" class="input pass"/>
+	        <input name="name" type="text" placeholder="Enter First name and Last name" pattern="^[\w]{3,16} [\w]{3,16}$" required="required" class="input pass"/>
+	        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
 	        <input type="submit" value="Sign me up!" class="inputButton"/>
 	        <div class="text-center">
 	            Have an account? <a href="/signin" id="login_id">signin</a>

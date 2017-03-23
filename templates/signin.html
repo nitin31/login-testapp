@@ -2,14 +2,28 @@
 {% block signin %}
 	<div class="container">
 		<div class="col-md-6">
+			{% if user_exists_message %}
+				<div class="col-md-12">
+						<div class="alert alert-warning">
+			  				{{user_exists_message}}
+						</div>
+				</div>
+			{% endif %}
+			{% if signin_needed %}
+				<div class="alert alert-danger" role="alert">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  {{signin_needed}} 
+				</div>
+			{% endif %}
 		    <div id="logbox">
-		      <form id="signup" method="post" action="/signup">
+		      <form id="login-user" method="post" action="/login_user">
 		        <h1>account login</h1>
-		        <input name="user[email]" type="email" placeholder="enter your email" class="input pass"/>
-		        <input name="user[password]" type="password" placeholder="enter your password" required="required" class="input pass"/>
+		        <input name="email" type="email" placeholder="enter your email" class="input pass"/>
+		        <input name="password" type="password" placeholder="enter your password" required="required" class="input pass"/>
 		        <input type="submit" value="Sign me in!" class="inputButton"/>
 		        <div class="text-center"">
-		                    <a href="#" id="">create an account</a> - <a href="#" id="">forgot password</a>
+		                    <a href="/signup" id="">create an account</a> - <a href="#" id="">forgot password</a>
 		                </div>
 		      </form>
 		    </div>
