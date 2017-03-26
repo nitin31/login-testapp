@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% block signin %}
-  <div class="container">
-	  <div class="col-md-6">
+  <div class="container-fluid">
+  			{% if error_message %}
+				<div class="alert alert-danger" role="alert">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  {{error_message}} 
+				</div>
+			{% endif %}
+  	<div class="col-md-offset-4">
 	    <div id="logbox">
 	      <form id="new_user" method="post" action="/new_user">
 	        <h1>Create an account</h1>
@@ -14,7 +21,7 @@
 	        </div>
 	      </form>
 	    </div>
-	   </div> 
+	   </div>
   </div>
 
 {% endblock %}

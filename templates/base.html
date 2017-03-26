@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Test App</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link href="static/styles.css" rel="stylesheet">
+	<link href="/static/styles.css" rel="stylesheet">
     
 </head>
 
@@ -39,11 +39,20 @@
 		{% block user_exists %}
 		{% endblock %}
 		
+		{% block last_login_time %}
+		{% endblock %}
+		
 		{% block signin %}
 		{% endblock %}
+		
 		{% block signup %}
 		{% endblock %}
 		
+		{% block forgot_password %}
+		{% endblock %}
+		
+		{% block reset_password %}
+		{% endblock %}
 
 	</body>
 
